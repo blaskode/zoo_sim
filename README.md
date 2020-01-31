@@ -5,5 +5,5 @@ A "Zoo Simulator" written in Java written to demonstrate polymorphism using (min
 <p>
 Download or clone, then invoke the makefile by opening a terminal window and typing 'make' (without the quotes).
 Then, invoke in the following manner: <br>
-  java Zoo <int> <int> <int> <int> <br>
+  java Zoo &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; <br>
   </p>
