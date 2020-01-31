@@ -15,65 +15,89 @@ public class Zoo
     private int days = 0;
     private int money = 100000;
     
-    /*
-    private Zoo()
-    {
-        
-    }
-    */
     
     public Zoo(int money, int num_penguins, int num_tigers, 
         int num_turtles)
     {
-        this.money = money;                     //put money in bank
-        buy(num_penguins, Species.PENGUIN);     //buy initial lot of animals...
+        this.money = money;    
+
+        // The second arg of 'buy' is an enum defined
+        // in its own file...
+        buy(num_penguins, Species.PENGUIN);     
         buy(num_tigers, Species.TIGER);
         buy(num_turtles, Species.TURTLE);
     }
     
+    /*
+        Returns the amount of money in the Zoo's treasury.
+    */
     public int get_money(){
         return money;
     }
     
+    /*
+      The returned value is a multi-line message stored in an array that
+      describes the transaction performed by invoking the method. The messages
+      can be printed to Standard Output using the Text_IO stub class that I
+      have included in this project.
+
+      The first argument is the number of animals we wish to buy; the
+      second argument is the type of animal we wish to buy. The second arg
+      is an enum defined in a separate file; it makes the method polymorphic
+      over a discrete set of 'Animal' subclasses.    
+    */
     private ArrayList<String> buy(int num, Species type)
     {
         int cost = 0;
         ArrayList<String> message = new ArrayList<String>();
+        /* 
+          The following switch lends polymorphic behavior to the function. 
+          Although it works well for the small number of 'Animal' subclasses, 
+          that we are working with, it would be cumbersome for bigger sets, due 
+          to code-repetition: each case-statement performs the same action 
+        */
         switch(type)
         {
-            case ANIMAL :  break; //error!
+            /* 
+              The first branch has been included for testing purposes, if 
+              it is ever actually triggered, the program is in a state of error 
+            */ 
+            case ANIMAL :  
+            {
+              throw new IllegalArgumentException("Superclass not valid input."); 
+            }
             case PENGUIN : 
             {
-                int i = 0;
-                for(; i < num; i++)
-                {
-                    inventory.add(new Penguin());
-                    cost += Penguin.get_cost();
-                }
-                message.add("You bought " + i + " penguins.");
-                break;
+              int i = 0;
+              for(; i < num; i++)
+              {
+                inventory.add(new Penguin());
+                cost += Penguin.get_cost();
+              }
+              message.add("You bought " + i + " penguins.");
+              break;
             }
             case TIGER : 
             {
-                int i = 0;
-                for(; i < num; i++)
-                {
-                    inventory.add(new Tiger());
-                    cost += Tiger.get_cost();
-                }
-                message.add("You bought " + i + " tigers.");
-                break;
+              int i = 0;
+              for(; i < num; i++)
+              {
+                inventory.add(new Tiger());
+                cost += Tiger.get_cost();
+              }
+              message.add("You bought " + i + " tigers.");
+              break;
             }
             case TURTLE :
             {
-                int i = 0;
-                for(; i < num; i++)
-                {
-                    inventory.add(new Turtle());
-                    cost += Turtle.get_cost();
-                }
-                message.add("You bought " + i + " turtles.");
-                break;
+              int i = 0;
+              for(; i < num; i++)
+              {
+                inventory.add(new Turtle());
+                cost += Turtle.get_cost();
+              }
+              message.add("You bought " + i + " turtles.");
+              break;
             }
             default : break;
         }
@@ -97,6 +121,24 @@ public class Zoo
     public ArrayList<String> random_birth()
     {
         ArrayList<String> message = new ArrayList<String>();
+        /*
+          This is where things get interesting. We create a new collection--
+          a 'list'--called 'adults' which only contains adult animals from our
+          Zoo inventory. We do this by using the 'stream' functionality introduced
+          in Java 8:
+
+          A stream is a wrapper that allows a container to be processed as if it
+          were a recursive data structure in a functional context, i.e., sequential 
+          processing that yields new-from-old structures, rather than a modification 
+          of the existing structure.
+
+          '.filter' allows only cases for which the condition is true to be added to the new
+          collection
+          '.collect(toList)' gathers the vetted items into a new list.
+          
+          New line characters between '.stream', '.filter', and '.collect' indicate the use of
+          Java's stream pipe operator.
+        */
         List<Animal> adults =
             inventory.stream()
                      .filter(a -> a.is_adult())

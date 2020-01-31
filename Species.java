@@ -1,9 +1,8 @@
 
 /**
- * Enumeration class Species - write a description of the enum class here
+ * Enumeration class Species 
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Damien Blasko
  */
 public enum Species
 {
