@@ -1,5 +1,18 @@
-# zoo_sim
-A "Zoo Simulator" written in Java written to demonstrate polymorphism using (minimalistic) inheritance, and use of streams with the ArrayList container class.
+## Zoo.java
+
+<p>
+	&nbsp; A "Zoo" simulation.
+	<br>
+	&nbsp; My first design goal was to demonstrate polymorphism through a minimalistic form of inheritance. Inheritance can be a valuable tool, but it must be used judiciously. 
+</p>
+
+<p>
+	&nbsp; A "Zoo" simulation.
+	<br>
+	&nbsp; My second design goal was to demonstrate the use of some features of Java 8 that borrow from the functional programming paradigm, including the 'stream' wrapper, the 'select' function, and the use of pipes. 
+</p>
+
+
 
 ## How to Compile
 <p>
