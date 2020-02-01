@@ -7,7 +7,6 @@
 </p>
 
 <p>
-	<br>
 	&nbsp; My second design goal was to demonstrate features of Java 8 that borrow from the functional paradigm, including the 'stream' wrapper, the 'select' function, and the use of pipes. 
 </p>
 
