@@ -50,6 +50,6 @@ Here's the last turn and end state and the code that invoked it.
 </p>
 
 <div>
-	<img src="/example.png" style="width:500px;height:600px;">
+	<img src="/example.png" style="width:50px;height:60px;">
 </div>
   
